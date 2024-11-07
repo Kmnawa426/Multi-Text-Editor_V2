@@ -39,6 +39,13 @@
             z-index: -1;
         }
 
+        /* Twinkling animation */
+        @keyframes twinkle {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, -15px); }
+            100% { transform: translate(15px, 15px); }
+        }
+
         .container {
             width: 80%;
             margin: 30px auto;
@@ -47,6 +54,28 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        }
+
+        h2 {
+            margin: 15px 0;
+            font-weight: 700;
+            color: #ff6347;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px #ff6347, 0 0 20px #ffd700;
+        }
+
+        .input-area {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            resize: none;
+            font-weight: 300;
+            line-height: 1.5;
         }
 
         button {
@@ -68,31 +97,69 @@
             box-shadow: 0 6px 15px rgba(255, 99, 71, 0.8);
         }
 
-        /* "How to Use" button style */
-        .how-to-use-btn {
-            background: #ffd700;
+        #output {
+            background: rgba(255, 255, 255, 0.9);
             color: #333;
-            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            min-height: 60px;
+            white-space: pre-wrap; /* Allows for formatted text with line breaks */
         }
 
+        #output p {
+            margin: 5px 0;
+            font-size: 1em;
+            font-weight: normal;
+        }
+
+        /* Input area focus effect */
+        .input-area:focus {
+            outline: none;
+            box-shadow: 0 0 8px 2px #ff6347;
+        }
+
+        /* Contact section styles */
+        .contact-info {
+            margin-top: 40px;
+            font-size: 1.1em;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            color: #ff6347;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- "How to Use" Button -->
-        <button class="how-to-use-btn" onclick="location.href='how-to-use.html'">How to Use</button>
-
         <h2>Enter Your Text</h2>
         <textarea id="templateText" class="input-area" rows="2" placeholder="e.g., My Name is $k and I live in $k"></textarea>
 
         <h2>Enter Values</h2>
-        <textarea id="values" class="input-area" rows="4" placeholder="e.g., Ramesh, Bangalore &#10; Suresh, Mumbai"></textarea>
+        <textarea id="values" class="input-area" rows="4" placeholder="e.g., Ramesh, Bangalore\nSuresh, Mumbai"></textarea>
 
         <h2>Output:</h2>
         <div id="output" class="input-area"></div>
 
         <button onclick="generateOutput()">Generate</button>
         <button onclick="copyToClipboard()">Copy Output</button>
+
+        <!-- Contact Information Section -->
+        <div class="contact-info">
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+            <p>GitHub: <a href="https://github.com/your-github-username" target="_blank">github.com/your-github-username</a></p>
+            <p>Instagram: <a href="https://instagram.com/your-instagram-username" target="_blank">instagram.com/your-instagram-username</a></p>
+        </div>
     </div>
 
     <script>
