@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Text Editor</title>
+    <title>Cosmic Text Template Replacer</title>
     <style>
         /* Basic Reset */
         * {
@@ -12,77 +12,20 @@
             box-sizing: border-box;
         }
 
-        /* Background with twinkling stars effect */
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+
+        /* Background with Gradient and Star Effect */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: #fff;
             overflow: hidden;
             text-align: center;
+            background: linear-gradient(to bottom right, #4e54c8, #8f94fb);
+            position: relative;
         }
 
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            max-width: 600px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .input-area {
-            background: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            border: none;
-            width: 100%;
-            font-size: 16px;
-        }
-
-        h2 {
-            margin: 15px 0 5px;
-            font-weight: bold;
-            color: #ffd700;
-        }
-
-        button {
-            background-color: #ff4500;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background-color: #ff6347;
-        }
-
-        #output p {
-            color: #ffd700;
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        /* Twinkling stars effect */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://source.unsplash.com/random/1600x900?galaxy') no-repeat center center fixed;
-            background-size: cover;
-            z-index: -2;
-        }
-
-        /* Star overlay */
+        /* Star overlay with colorful glow */
         body::after {
             content: "";
             position: fixed;
@@ -91,7 +34,7 @@
             width: 200%;
             height: 200%;
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0px 0px 2px 1px #fff, 0px 0px 4px 2px #ff6347, 0px 0px 6px 3px #ffd700;
+            box-shadow: 0px 0px 5px 2px #ff6347, 0px 0px 10px 4px #ffd700, 0px 0px 15px 6px #00ffff;
             animation: twinkle 4s infinite alternate;
             z-index: -1;
         }
@@ -99,15 +42,80 @@
         /* Twinkling animation */
         @keyframes twinkle {
             0% { transform: translate(0, 0); }
-            50% { transform: translate(-10px, -10px); }
-            100% { transform: translate(10px, 10px); }
+            50% { transform: translate(-15px, -15px); }
+            100% { transform: translate(15px, 15px); }
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        }
+
+        h2 {
+            margin: 15px 0;
+            font-weight: 700;
+            color: #ff6347;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px #ff6347, 0 0 20px #ffd700;
+        }
+
+        .input-area {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            resize: none;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        button {
+            background: linear-gradient(to right, #ff6347, #ff4500);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 99, 71, 0.6);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #ff4500, #ff6347);
+            box-shadow: 0 6px 15px rgba(255, 99, 71, 0.8);
+        }
+
+        #output p {
+            color: #ffd700;
+            font-size: 1.2em;
+            margin: 15px 0;
+            font-weight: 500;
+            text-shadow: 0 0 10px #ffd700, 0 0 20px #ff6347;
+        }
+
+        /* Input area focus effect */
+        .input-area:focus {
+            outline: none;
+            box-shadow: 0 0 8px 2px #ff6347;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Enter Your Text</h2>
-        <textarea id="templateText" class="input-area" rows="2" placeholder="e.g., My Name is $km and I live in $km"></textarea>
+        <textarea id="templateText" class="input-area" rows="2" placeholder="e.g., My Name is $k and I live in $k"></textarea>
 
         <h2>Enter Values</h2>
         <textarea id="values" class="input-area" rows="4" placeholder="e.g., Ramesh, Bangalore\nSuresh, Mumbai"></textarea>
@@ -128,9 +136,9 @@
                 const values = line.split(/\s*,\s*/); // Split each line by commas for individual values
                 let filledText = templateText;
                 
-                // Replace each occurrence of $km with respective values
+                // Replace each occurrence of $k with respective values
                 values.forEach((value, index) => {
-                    filledText = filledText.replace('$km', value);
+                    filledText = filledText.replace('$k', value);
                 });
                 
                 outputHtml += `<p>${filledText}</p>`;
